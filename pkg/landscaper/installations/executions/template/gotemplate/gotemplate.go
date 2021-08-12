@@ -213,7 +213,7 @@ func (t *Templater) storeState(ctx context.Context, prefix string, tmplExec lsv1
 }
 
 func getTemplateFromExecution(tmplExec lsv1alpha1.TemplateExecutor, blueprint *blueprints.Blueprint) (string, error) {
-	if len(tmplExec.Template.RawMessage) != 0 {
+	if tmplExec.Template != nil && len(tmplExec.Template.RawMessage) != 0 {
 		var rawTemplate string
 		if err := json.Unmarshal(tmplExec.Template.RawMessage, &rawTemplate); err != nil {
 			return "", err

@@ -159,7 +159,7 @@ func (t *Templater) TemplateExportExecutions(tmplExec lsv1alpha1.TemplateExecuto
 }
 
 func (t *Templater) templateNode(tmplExec lsv1alpha1.TemplateExecutor, blueprint *blueprints.Blueprint) (spiffyaml.Node, error) {
-	if len(tmplExec.Template.RawMessage) != 0 {
+	if tmplExec.Template != nil && len(tmplExec.Template.RawMessage) != 0 {
 		return spiffyaml.Unmarshal("template", tmplExec.Template.RawMessage)
 	}
 	if len(tmplExec.File) != 0 {
