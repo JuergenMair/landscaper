@@ -15,13 +15,12 @@ import (
 	unsafe "unsafe"
 
 	v2 "github.com/gardener/component-spec/bindings-go/apis/v2"
+	core "github.com/gardener/landscaper/apis/core"
 	corev1 "k8s.io/api/core/v1"
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
 	conversion "k8s.io/apimachinery/pkg/conversion"
 	runtime "k8s.io/apimachinery/pkg/runtime"
 	selection "k8s.io/apimachinery/pkg/selection"
-
-	core "github.com/gardener/landscaper/apis/core"
 )
 
 func init() {
@@ -2680,9 +2679,7 @@ func autoConvert_v1alpha1_TemplateExecutor_To_core_TemplateExecutor(in *Template
 	out.Name = in.Name
 	out.Type = core.TemplateType(in.Type)
 	out.File = in.File
-	if err := Convert_v1alpha1_AnyJSON_To_core_AnyJSON(&in.Template, &out.Template, s); err != nil {
-		return err
-	}
+	out.Template = (*core.AnyJSON)(unsafe.Pointer(in.Template))
 	return nil
 }
 
@@ -2695,9 +2692,7 @@ func autoConvert_core_TemplateExecutor_To_v1alpha1_TemplateExecutor(in *core.Tem
 	out.Name = in.Name
 	out.Type = TemplateType(in.Type)
 	out.File = in.File
-	if err := Convert_core_AnyJSON_To_v1alpha1_AnyJSON(&in.Template, &out.Template, s); err != nil {
-		return err
-	}
+	out.Template = (*AnyJSON)(unsafe.Pointer(in.Template))
 	return nil
 }
 

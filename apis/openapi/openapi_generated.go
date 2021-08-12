@@ -5542,7 +5542,6 @@ func schema_landscaper_apis_core_v1alpha1_TemplateExecutor(ref common.ReferenceC
 					"template": {
 						SchemaProps: spec.SchemaProps{
 							Description: "Template contains an optional inline template. The template has to be of string for go template and a valid yaml/json for spiff.",
-							Default:     map[string]interface{}{},
 							Ref:         ref("github.com/gardener/landscaper/apis/core/v1alpha1.AnyJSON"),
 						},
 					},

@@ -180,7 +180,7 @@ type TemplateExecutor struct {
 	// The template has to be of string for go template
 	// and a valid yaml/json for spiff.
 	// + optional
-	Template AnyJSON `json:"template,omitempty"`
+	Template *AnyJSON `json:"template,omitempty"`
 }
 
 // SubinstallationTemplateList is a list of installation templates
