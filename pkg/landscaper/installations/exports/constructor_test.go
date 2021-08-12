@@ -98,7 +98,7 @@ var _ = Describe("Constructor", func() {
 		op.Inst.Blueprint.Info.ExportExecutions = []lsv1alpha1.TemplateExecutor{
 			{
 				Type:     lsv1alpha1.GOTemplateType,
-				Template: lsv1alpha1.AnyJSON{RawMessage: []byte(`"exports:\n  root.y: {{ index .values.dataobjects \"root.y\" }}\n  root.z: {{ index .values.dataobjects \"root.z\" }}"`)},
+				Template: &lsv1alpha1.AnyJSON{RawMessage: []byte(`"exports:\n  root.y: {{ index .values.dataobjects \"root.y\" }}\n  root.z: {{ index .values.dataobjects \"root.z\" }}"`)},
 			},
 		}
 
@@ -140,7 +140,7 @@ var _ = Describe("Constructor", func() {
 		op.Inst.Blueprint.Info.ExportExecutions = []lsv1alpha1.TemplateExecutor{
 			{
 				Type:     lsv1alpha1.GOTemplateType,
-				Template: lsv1alpha1.AnyJSON{RawMessage: []byte(`"root.y: true\nroot.z: {{ index .values.dataobjects \"root.z\" }}"`)},
+				Template: &lsv1alpha1.AnyJSON{RawMessage: []byte(`"root.y: true\nroot.z: {{ index .values.dataobjects \"root.z\" }}"`)},
 			},
 		}
 
@@ -160,7 +160,7 @@ var _ = Describe("Constructor", func() {
 		op.Inst.Blueprint.Info.ExportExecutions = []lsv1alpha1.TemplateExecutor{
 			{
 				Type:     lsv1alpha1.GOTemplateType,
-				Template: lsv1alpha1.AnyJSON{RawMessage: []byte(`"exports:\n  root.y: {{ index .values.deployitems.deploy \"root.y\" }}\n  root.z: {{ index .values.dataobjects \"root.z\" }}"`)},
+				Template: &lsv1alpha1.AnyJSON{RawMessage: []byte(`"exports:\n  root.y: {{ index .values.deployitems.deploy \"root.y\" }}\n  root.z: {{ index .values.dataobjects \"root.z\" }}"`)},
 			},
 		}
 
